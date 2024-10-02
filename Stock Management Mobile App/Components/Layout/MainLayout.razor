@@ -1,13 +1,15 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="">
+<div class="w-screen">
     
 
     <main>
-        
-
-        <article class="">
+        <article class="min-h-screen">
             @Body
         </article>
     </main>
+
+    <div class="fixed bottom-6 w-full px-2.5 py-1.5">
+        <BtmNavMenu/>
+    </div>
 </div>
