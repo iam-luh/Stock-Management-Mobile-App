@@ -15,17 +15,18 @@ a.navactive {
     @apply rounded-xl bg-blue-400 px-1 py-1.5;
 }
 
-    a.navactive span {
-        @apply self-center text-nowrap text-sm font-semibold text-black;
-    }
+a.navactive span {
+    @apply self-center text-nowrap text-sm font-semibold text-black;
+}
 
-    a.navactive svg {
-        @apply size-6 fill-black text-black;
-    }
 
-    a.navactive span {
-        display: inline;
-    }
+a.navactive svg {
+    @apply size-6 fill-black text-black;
+}
+
+a.navactive span {
+    display: inline;
+}
 
 .bottomnavbar {
     @apply flex w-11/12 flex-row flex-nowrap justify-between gap-x-2 justify-self-center rounded-3xl bg-black px-2 py-2;
