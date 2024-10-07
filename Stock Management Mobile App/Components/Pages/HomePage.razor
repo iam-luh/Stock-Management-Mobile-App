@@ -1,4 +1,6 @@
 ﻿@page "/"
+@using Stock_Management_Mobile_App.Components.Services
+@inject TransactionService transactionservice
 
 <div class="mt-4 grid" >
     <span class="col-start-1 row-start-1 justify-self-center text-xl font-normal text-black">Dashboard</span>
@@ -8,8 +10,16 @@
     </svg>
 </div>
 
-<span class="mt-4 block text-sm font-semibold text-black">Good morning, Lusungu Godwin</span>
+<span class="mt-4 block text-lg font-semibold text-black">Good morning, Lusungu Godwin</span>
 
-<span class="mt-2 block text-sm font-normal text-black">Here are your Business Stats</span>
+<span class="mt-2 block text-lg font-normal text-black">Here are your Business Stats</span>
 
+<div class="scrollbar-hide flex w-full flex-row scrollbar-hide::-webkit-scrollbar">
+    @foreach(var item in listdates)
+    {
+        <div class="rounded-full @(item.Equals(chosendate)?"selecteddate":"notselecteddate") p-2" @onclick="()=>SortTransactions(item)" >
+            <span>@item</span>
+        </div>
+    }
+</div>
 

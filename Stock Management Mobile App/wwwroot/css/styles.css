@@ -32,3 +32,24 @@ a.navactive span {
     @apply flex w-11/12 flex-row flex-nowrap justify-between gap-x-2 justify-self-center rounded-3xl bg-black px-2 py-2;
 }
 
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge, and Firefox */
+.scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.notselecteddate {
+    @apply border-2 border-gray-400;
+}
+
+.selecteddate{
+    @apply bg-blue-400;
+}
+
+
