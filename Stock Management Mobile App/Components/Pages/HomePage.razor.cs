@@ -1,3 +1,7 @@
+using ChartJs.Blazor.BarChart;
+using ChartJs.Blazor.Common;
+using ChartJs.Blazor.PieChart;
+using ChartJs.Blazor.Util;
 using Stock_Management_Mobile_App.Components.Models;
 
 namespace Stock_Management_Mobile_App.Components.Pages
@@ -8,6 +12,7 @@ namespace Stock_Management_Mobile_App.Components.Pages
         List<Transaction> alltransactions;
         List<Transaction> sortedtransactions;
         String chosendate;
+        private BarConfig Config;
         public HomePage() 
         {
             listdates = [];
@@ -32,6 +37,8 @@ namespace Stock_Management_Mobile_App.Components.Pages
         {
             await AddDates();
             alltransactions = transactionservice.GetTransactions();
+            SortTransactions("Today");
+            
         }
 
         private void SortTransactions(String selecteddate)
@@ -87,5 +94,40 @@ namespace Stock_Management_Mobile_App.Components.Pages
                 return;
             }
         }
+
+        private void ConfigureTwoLabeledChart()
+        {
+            Config = new BarConfig
+            {
+                Options = new BarOptions
+                {
+                    Responsive = true,
+                    Title = new OptionsTitle
+                    {
+                        Display = true,
+                        Text = "Sales Chart"
+                    }
+                }
+            };
+
+            foreach (string color in new[] { "Income", "Expenses" })
+            {
+                Config.Data.Labels.Add(color);
+            }
+
+            BarDataset<int> dataset = new(new[] { 6, 5, 3, 7 })
+            {
+                BackgroundColor = new[]
+                {
+            ColorUtil.ColorHexString(54, 162, 235), // Slice 1 aka "Red"
+            ColorUtil.ColorHexString(54, 162, 235), // Slice 2 aka "Yellow"
+            ColorUtil.ColorHexString(54, 162, 235), // Slice 3 aka "Green"
+            ColorUtil.ColorHexString(54, 162, 235), // Slice 4 aka "Blue"
+            
+                }
+            };
+
+            Config.Data.Datasets.Add(dataset);
+        }
     }
-}
+} 

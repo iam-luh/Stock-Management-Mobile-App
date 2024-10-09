@@ -52,4 +52,12 @@ a.navactive span {
     @apply bg-blue-400;
 }
 
+.selecteddate span{
+    @apply text-sm font-bold text-black;
+}
+
+.notselecteddate span {
+    @apply text-sm text-black;
+}
+
 

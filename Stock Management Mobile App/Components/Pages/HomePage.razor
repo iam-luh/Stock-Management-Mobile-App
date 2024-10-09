@@ -14,7 +14,7 @@
 
 <span class="mt-2 block text-lg font-normal text-black">Here are your Business Stats</span>
 
-<div class="scrollbar-hide flex w-full flex-row scrollbar-hide::-webkit-scrollbar">
+<div class="scrollbar-hide flex w-full flex-row gap-x-3 scrollbar-hide::-webkit-scrollbar">
     @foreach(var item in listdates)
     {
         <div class="rounded-full @(item.Equals(chosendate)?"selecteddate":"notselecteddate") p-2" @onclick="()=>SortTransactions(item)" >
@@ -22,4 +22,27 @@
         </div>
     }
 </div>
+
+<div class="grid-cols-2 grid-rows-1 mt-4 grid w-full gap-x-2.5">
+    <div class="col-start-1 col-span-1 row-start-1 border-4 flex w-full flex-col gap-y-2 rounded-2xl border-b-transparent border-l-green-500 border-r-transparent border-t-transparent bg-white px-1 py-3">
+        <div class="flex flex-auto flex-row gap-x-1">
+            <span class="text-xs font-normal text-green-500">Total Sales </span>
+            <span class="text-xs font-normal text-black">this month</span>
+        </div>
+        <span class="text-sm font-normal text-black">TZS </span>
+    </div>
+    <div class="col-start-2 row-start-1 col-span-1 border-4 flex w-full flex-col gap-y-2 rounded-2xl border-b-transparent border-l-red-500 border-r-transparent border-t-transparent bg-white px-1 py-3">
+        <div class="flex flex-auto flex-row gap-x-1">
+            <span class="text-xs font-normal text-red-500">Total Expenses </span>
+            <span class="text-xs font-normal text-black">this month</span>
+        </div>
+        <span class="text-sm font-normal text-black">TZS </span>
+   </div>
+</div>
+
+
+
+
+
+
 
