@@ -1,4 +1,57 @@
 ﻿@page "/post"
-<h3>PostPage</h3>
+@inject NavigationManager navigation
+
+<div class="mt-4 grid w-full">
+    <span class="justify-self-center text-lg font-bold text-black">Post</span>
+</div>
+<div class="grid-rows-1 grid-cols-2 mt-3 grid w-full rounded-2xl bg-white p-2" >
+    <div class="col-start-1 row-start-1 col-span-2 flex flex-col gap-y-2 pr-10" >
+        <span class="text-sm font-bold text-black" >Income</span>
+        <span class="text-wrap text-xs font-normal text-black" >The money that your business brings in from the sale of goods or services</span>
+    </div>
+    <div class="col-start-2 row-start-1 grid w-full" >
+        <span class="self-center justify-self-end text-lg font-bold text-black" >+</span>
+    </div>
+</div>
+
+<div class="grid-rows-1 grid-cols-2 mt-3 grid w-full rounded-2xl bg-white p-2">
+    <div class="col-start-1 row-start-1 col-span-2 flex flex-col gap-y-2 pr-10">
+        <span class="text-sm font-bold text-black">Expenses</span>
+        <span class="text-wrap text-xs font-normal text-black">The money that you spend or incur in the management of your business</span>
+    </div>
+    <div class="col-start-2 row-start-1 grid w-full">
+        <span class="self-center justify-self-end text-lg font-bold text-black">+</span>
+    </div>
+</div>
+
+<div class="grid-rows-1 grid-cols-2 mt-3 grid w-full rounded-2xl bg-white p-2">
+    <div class="col-start-1 row-start-1 col-span-2 flex flex-col gap-y-2 pr-10">
+        <span class="text-sm font-bold text-black">New Product/Service</span>
+        <span class="text-wrap text-xs font-normal text-black">Create or register new products or services which are offered in your business</span>
+    </div>
+    <div class="col-start-2 row-start-1 grid w-full">
+        <span class="self-center justify-self-end text-lg font-bold text-black">+</span>
+    </div>
+</div>
+
+<div class="grid-rows-1 grid-cols-2 mt-3 grid w-full rounded-2xl bg-white p-2">
+    <div class="col-start-1 row-start-1 col-span-2 flex flex-col gap-y-2 pr-10">
+        <span class="text-sm font-bold text-black">Product Purchase/Restock</span>
+        <span class="text-wrap text-xs font-normal text-black">Record the costs that you have spent to purchase products and record the quantity of the product that has been added</span>
+    </div>
+    <div class="col-start-2 row-start-1 grid w-full">
+        <span class="self-center justify-self-end text-lg font-bold text-black">+</span>
+    </div>
+</div>
+
+<div class="grid-rows-1 grid-cols-2 mt-3 grid w-full rounded-2xl bg-white p-2">
+    <div class="col-start-1 row-start-1 col-span-2 flex flex-col gap-y-2 pr-10">
+        <span class="text-sm font-bold text-black">Customers</span>
+        <span class="text-wrap text-xs font-normal text-black">Add new customers which you serve through your business</span>
+    </div>
+    <div class="col-start-2 row-start-1 grid w-full">
+        <span class="self-center justify-self-end text-lg font-bold text-black">+</span>
+    </div>
+</div>
 
 

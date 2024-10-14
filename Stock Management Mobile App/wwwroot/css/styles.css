@@ -60,4 +60,25 @@ a.navactive span {
     @apply text-sm text-black;
 }
 
+.visiblehomediv{
+    display: block;
+}
+
+.visiblehomediv span{
+    display: block;
+}
+
+.hiddenhomediv{
+    display: none;
+}
+
+.hiddenhomediv span{
+    display: none;
+}
+
+.showitem{
+    display: inline;
+}
+
+
 

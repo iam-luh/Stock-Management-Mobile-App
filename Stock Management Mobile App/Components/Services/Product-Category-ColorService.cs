@@ -12,12 +12,12 @@ namespace Stock_Management_Mobile_App.Components.Services
             filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "productcategorycolor.json");
         }
 
-        public void SaveTransactions(List<Product_Category_Color> items)
+        public void SaveProductCategories(List<Product_Category_Color> items)
         {
             File.WriteAllText(filepath, JsonSerializer.Serialize(items));
         }
 
-        public List<Product_Category_Color> GetTransactions()
+        public List<Product_Category_Color> GetProductCategories()
         {
             if (!File.Exists(filepath))
                 return new List<Product_Category_Color>();

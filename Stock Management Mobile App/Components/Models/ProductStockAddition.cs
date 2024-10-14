@@ -10,5 +10,6 @@ namespace Stock_Management_Mobile_App.Components.Models
         public int Quantity { get; set; }
         public string? Units { get; set; }
         public int PurchasePrice { get; set; }
+      
     }
 }

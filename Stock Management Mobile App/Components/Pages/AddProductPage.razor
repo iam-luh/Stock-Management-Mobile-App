@@ -1,0 +1,23 @@
+﻿@page "/addproduct"
+@using Stock_Management_Mobile_App.Components.Services
+@inject ProductService productservice
+@inject Product_Category_ColorService productcategoryservice
+
+<div class="mt-4 grid w-full">
+    <span class="justify-self-center text-lg font-bold text-black" >Add or Update a Product</span>
+</div>
+
+<div class="mt-2 flex w-full flex-col gap-y-2" >
+    <span class="text-sm font-normal text-black" >Product Name</span>
+    <input class="w-full rounded-2xl bg-white p-2 text-lg font-normal text-black"  placeholder="Enter your product Name" @bind-value="Myproduct.ProductName" />
+</div>
+
+<div class="mt-2 flex w-full flex-col gap-y-2">
+    <span class="text-sm font-normal text-black">Product Name</span>
+    <input class="w-full rounded-2xl bg-white p-2 text-lg font-normal text-black" placeholder="Enter your Main Product Categories"  @bind-value="Myproduct.ProductName" />
+</div>
+
+<div class="mt-2 flex w-full flex-col gap-y-2">
+    <span class="text-sm font-normal text-black">Product Name</span>
+    <input class="w-full rounded-2xl bg-white p-2 text-lg font-normal text-black" placeholder="Enter your product Name" @bind-value="Myproduct.ProductName" />
+</div>

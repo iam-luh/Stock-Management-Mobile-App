@@ -12,13 +12,16 @@ namespace Stock_Management_Mobile_App.Components.Pages
         List<Transaction> alltransactions;
         List<Transaction> sortedtransactions;
         String chosendate;
-        private BarConfig Config;
+        bool IsLoss; 
+        private BarConfig BarConfigure;
         public HomePage() 
         {
             listdates = [];
             chosendate = string.Empty;
             alltransactions = [];
             sortedtransactions = [];
+            IsLoss = true;
+            
         }
 
         private async Task AddDates()
@@ -38,7 +41,7 @@ namespace Stock_Management_Mobile_App.Components.Pages
             await AddDates();
             alltransactions = transactionservice.GetTransactions();
             SortTransactions("Today");
-            
+            ConfigureTwoLabeledChart();
         }
 
         private void SortTransactions(String selecteddate)
@@ -97,22 +100,24 @@ namespace Stock_Management_Mobile_App.Components.Pages
 
         private void ConfigureTwoLabeledChart()
         {
-            Config = new BarConfig
+            BarConfigure = new BarConfig
             {
-                Options = new BarOptions
+                Options = new  BarOptions
                 {
                     Responsive = true,
                     Title = new OptionsTitle
                     {
                         Display = true,
-                        Text = "Sales Chart"
-                    }
+                        Text = "Sales Chart", 
+                        FontSize= 18
+                    }, 
+                     
                 }
             };
 
-            foreach (string color in new[] { "Income", "Expenses" })
+            foreach (string color in new[] { "Income", "Expenses", "Income", "Expenses" })
             {
-                Config.Data.Labels.Add(color);
+                BarConfigure.Data.Labels.Add(color);
             }
 
             BarDataset<int> dataset = new(new[] { 6, 5, 3, 7 })
@@ -127,7 +132,7 @@ namespace Stock_Management_Mobile_App.Components.Pages
                 }
             };
 
-            Config.Data.Datasets.Add(dataset);
+            BarConfigure.Data.Datasets.Add(dataset);
         }
     }
 } 

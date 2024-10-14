@@ -6,10 +6,10 @@ namespace Stock_Management_Mobile_App.Components.Models
     {
         public int Id { get; set; }
         public string? ProductCategory { get; set; }
-        public int ProductID { get; set; }
+        public string? ProductName { get; set; }
         public string? ProductColor { get; set; }
         public int ProductQuantity { get; set; }
-        public int ExpenseID { get; set; }
+        public string? ExpenseName { get; set; }
         public int CustomerID { get; set; }
         public string? TransactionDescription { get; set; }
         public int TransactionPrice { get; set; }

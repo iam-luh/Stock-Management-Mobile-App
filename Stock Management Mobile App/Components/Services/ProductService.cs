@@ -12,12 +12,12 @@ namespace Stock_Management_Mobile_App.Components.Services
             filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "products.json");
         }
 
-        public void SaveTransactions(List<Product> items)
+        public void SaveProducts(List<Product> items)
         {
             File.WriteAllText(filepath, JsonSerializer.Serialize(items));
         }
 
-        public List<Product> GetTransactions()
+        public List<Product> GetProducts()
         {
             if (!File.Exists(filepath))
                 return new List<Product>();

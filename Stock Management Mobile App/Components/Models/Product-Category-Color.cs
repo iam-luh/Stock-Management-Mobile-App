@@ -8,5 +8,8 @@ namespace Stock_Management_Mobile_App.Components.Models
         public string? Category {  get; set; }
         public string? Color { get; set; }
         public int ProductQuantity { get; set; }
+        public int PurchasePrice { get; set; }
+        public int RetailPrice { get; set; }
+        public int WholeSalePrice { get; set; }
     }
 }
