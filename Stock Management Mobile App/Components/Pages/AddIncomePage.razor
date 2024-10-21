@@ -1,3 +1,73 @@
-﻿<h3>AddIncomePage</h3>
+﻿@page "/addincome"
 
 
+@using Stock_Management_Mobile_App.Components.Models
+@using Stock_Management_Mobile_App.Components.Services
+@inject NavigationManager navigation
+@inject TransactionService transactionservice
+@inject ProductService productservice
+@inject Product_Category_ColorService productcategoryservice
+@inject CustomerService customerservice
+
+<div class="mt-4 grid w-full" >
+    <span class="justify-self-center text-lg font-normal text-black">Record an Income Transaction</span>
+</div>
+
+<EditForm Model="@MyTransaction" OnValidSubmit="@SaveIncome">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mt-2">
+        <label for="ProductName" class="text-lg font-normal text-black" >Product Name</label>
+        <InputSelect id="ProductName" class="w-full bg-white p-2 text-sm font-bold" @bind-Value="MyProduct.ProductName"  @onchange="(ChangeEventArgs e)=>SortProductCategories(e)">
+            <option value="">Select a Product</option>
+            @foreach (var item in allproducts)
+            {
+                <option value="@item">@item.ProductName</option>
+            }
+        </InputSelect>
+    </div>
+    
+    <div class="mt-2">
+        <label for="ProductCategory" class="text-lg font-normal text-black" >Product Category</label>
+        <InputSelect id="ProductCategory" class="w-full bg-white p-2 text-sm font-bold" @bind-Value="MyProduct.ProductCategory"  @onchange="(ChangeEventArgs e)=>SortProductSubCategories(e)">
+            <option value="">Select a Category</option>
+            @foreach (var category in sortedproductcategories)
+            {
+                <option value="@category">@category</option>
+            }
+        </InputSelect>
+    </div>
+    
+    <div class="mt-2">
+        <label for="ProductSubCategory" class="text-lg font-normal text-black" >Product Sub Category</label>
+        <InputSelect id="ProductSubCategory" class="w-full bg-white p-2 text-sm font-bold" @bind-Value="MyProduct.ProductSubCategory"  @onchange="(ChangeEventArgs e)=>e.Value.">
+            <option value="">Select a Sub Category</option>
+            @foreach (var subcategory in sortedproductsubcategories)
+            {
+                <option value="@subcategory">@subcategory</option>
+            }
+        </InputSelect>
+    </div>
+
+    <div class="mt-2">
+        <label for="RetailPrice" class="text-lg font-normal text-black" >Retail Price</label>
+        <input id="RetailPrice" class="w-full rounded-full bg-white p-2 text-sm font-bold" @bind="@Product_Category.RetailPrice" type="number" step="0.01" />
+    </div>
+
+    <div class="mt-2">
+        <label for="Quantity" class="text-lg font-normal text-black" >Quantity</label>
+        <input id="Quantity" class="w-full rounded-full bg-white p-2 text-sm font-bold" @bind="@MyTransaction.ProductQuantity" type="number" />
+    </div>
+
+    <div class="mt-2">
+        <label for="TotalPrice" class="text-lg font-normal text-black" >Total Price</label>
+        <input id="TotalPrice" class="w-full rounded-full bg-white p-2 text-sm font-bold" @bind="@MyTransaction.TransactionPrice" type="number" step="0.01" readonly />
+    </div>
+
+    <div class="mt-4 grid w-full" >
+        <button type="submit" class="w-2/3 justify-self-center rounded-full bg-blue-500 p-2 text-sm font-bold text-white">
+            Save Transaction</button>
+    </div>
+
+</EditForm>

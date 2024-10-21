@@ -3,21 +3,100 @@
 @inject ProductService productservice
 @inject Product_Category_ColorService productcategoryservice
 
+
+<div class="p-2">
 <div class="mt-4 grid w-full">
     <span class="justify-self-center text-lg font-bold text-black" >Add or Update a Product</span>
 </div>
 
 <div class="mt-2 flex w-full flex-col gap-y-2" >
-    <span class="text-sm font-normal text-black" >Product Name</span>
-    <input class="w-full rounded-2xl bg-white p-2 text-lg font-normal text-black"  placeholder="Enter your product Name" @bind-value="Myproduct.ProductName" />
+    <span class="text-lg font-normal text-black">Product Name</span>
+    <input class="w-full rounded-2xl bg-white p-2 text-sm font-normal text-black" placeholder="Enter your product Name" @bind-value="Myproduct.ProductName" />
 </div>
 
 <div class="mt-2 flex w-full flex-col gap-y-2">
-    <span class="text-sm font-normal text-black">Product Name</span>
-    <input class="w-full rounded-2xl bg-white p-2 text-lg font-normal text-black" placeholder="Enter your Main Product Categories"  @bind-value="Myproduct.ProductName" />
+    <span class="text-lg font-normal text-black">Product Description(Optional)</span>
+    <input class="w-full rounded-2xl bg-white p-2 text-sm font-normal text-black" placeholder="Enter your product Description" 
+    @bind-value="Myproduct.ProductDescription" />
 </div>
 
 <div class="mt-2 flex w-full flex-col gap-y-2">
-    <span class="text-sm font-normal text-black">Product Name</span>
-    <input class="w-full rounded-2xl bg-white p-2 text-lg font-normal text-black" placeholder="Enter your product Name" @bind-value="Myproduct.ProductName" />
+    <span class="text-lg font-normal text-black">Main Product Categories</span>
+    <input class="w-full rounded-2xl bg-white p-2 text-sm font-normal text-black" @oninput="(ChangeEventArgs e)=>AddProductCategory(e)" 
+    placeholder="Enter your Main Product Categories"  @bind-value="Product_Category.Category" />
+
+</div>
+
+
+<div class="mt-2 flex w-full flex-row flex-wrap gap-x-2 gap-y-2" >
+    @foreach (var item in addedproductcategories)
+    {
+        <div class="flex flex-row flex-nowrap gap-x-2 rounded-full border border-black px-2 py-1">
+            <span class="font-sm self-center text-black" >@item</span>
+            <a @onclick="()=>RemoveProductCategory(item)" class="text-red-500 font-light text-lg">X</a>
+        </div>
+    }
+</div>
+
+<div class="mt-2 flex w-full flex-col gap-y-2">
+    <span class="text-lg font-normal text-black">Sub-Product Categories</span>
+    <input class="w-full rounded-2xl bg-white p-2 text-sm font-normal text-black" @oninput="(ChangeEventArgs e)=>AddProductSubCategory(e)" 
+    placeholder="Enter your Sub Product Categories " @bind-value="Product_Category.SubCategory" />
+</div> 
+
+<div class="mt-2 flex w-full flex-row flex-wrap gap-x-2 gap-y-2" >
+    @foreach (var item in addedproductsubcategories)
+    {
+        <div class="flex flex-row flex-nowrap gap-x-2 rounded-full border border-black px-2 py-1">
+            <span class="font-sm self-center text-black" >@item</span>
+            <a @onclick="()=>RemoveProductSubCategory(item)" class="text-red-500 font-light text-lg">X</a>
+        </div>
+    }
+ </div>
+
+<div class="mt-2 flex w-full flex-col gap-y-2">
+    <span class="text-lg font-normal text-black">Product Units</span>
+    <select class="w-full rounded-2xl bg-white p-2 text-sm font-normal text-black" @bind="Myproduct.ProductUnit" >
+        <option  value="">Select a category</option>
+        @foreach (var category in allproductunits)
+        {
+            <option value="@category">@category</option>
+        }
+    </select>
+    
+</div>
+
+<div class="mt-2 flex w-full flex-col gap-y-2">
+    <span class="text-lg font-normal text-black">Purchase Price</span>
+    <input class="w-full rounded-2xl bg-white p-2 text-sm font-normal text-black" type="number" 
+    placeholder="Enter your Product Purchase Price " @bind-value="Product_Category.PurchasePrice" />
+</div>
+
+<div class="mt-2 flex w-full flex-col gap-y-2">
+    <span class="text-lg font-normal text-black">Retail Price</span>
+    <input class="w-full rounded-2xl bg-white p-2 text-sm font-normal text-black" type="number"
+    placeholder="Enter your Product Retail Price" @bind-value="Product_Category.RetailPrice" />
+</div>
+
+<div class="mt-2 flex w-full flex-col gap-y-2">
+    <span class="text-lg font-normal text-black">WholeSale Price</span>
+    <input class="w-full rounded-2xl bg-white p-2 text-sm font-normal text-black" type="number" 
+    placeholder="Enter your Product WholeSale Price" @bind-value="Product_Category.WholeSalePrice" />
+</div>
+
+<div class="mt-2 flex w-full flex-col gap-y-2">
+    <span class="text-lg font-normal text-black">Initial Product Quantity</span>
+    <input class="w-full rounded-2xl bg-white p-2 text-sm font-normal text-black" type="number" 
+    placeholder="Enter the Initial Product Quantity"
+    @bind-value="Product_Category.AvailableProductQuantity" />
+</div>
+
+<div class="w-full grid mt-3" >
+    <button class="w-2/3 bg-blue-500 justify-self-center text-white font-bold font-lg rounded-full p-2" @onclick="()=>SaveProduct()" >Save Product</button>
+</div>
+
+
+<div class="mb-96 h-1/3 bg-gray-100">
+    <span>  </span>
+</div>
 </div>
